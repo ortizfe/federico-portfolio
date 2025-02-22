@@ -6,8 +6,9 @@ function App() {
   const [artist, setArtist] = useState({});
 
   const fetchApi = async () => {
-    const response = await axios.post("http://localhost:8080/api");
-    setArtist(response.json());
+    const response = await axios.get("http://localhost:8080/artist");
+    console.log(response.data);
+    setArtist(response.data);
   };
 
   useEffect(() => {
@@ -17,9 +18,8 @@ function App() {
   return (
     <>
       <h1>Spotify API</h1>
-      {/*artist.map((data, index) => (
-        <div key={index}>{data}</div>
-      ))*/}
+      <h3>{artist.name}</h3>
+      <p>{artist.genres}</p>
     </>
   );
 }
