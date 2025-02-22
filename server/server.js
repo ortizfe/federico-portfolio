@@ -1,14 +1,15 @@
 import express from "express";
-const app = express();
-import cors from "cors";
-const corsOptions = {
-  origin: ["https://localhost:5173"],
-};
+import { Router } from "express";
 
-app.use(cors(corsOptions));
+import SpotifyWebApi from "spotify-web-api-node";
 
-app.get("/api", (req, res) => {
-  res.json({ fruits: ["apple", "orange", "banana"] });
+import { config } from "dotenv";
+config();
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+  redirectUri: process.env.SPOTIFY_CALLBACK,
 });
 
 app.listen(8080, () => {
