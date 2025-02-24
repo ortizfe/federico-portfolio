@@ -37,6 +37,15 @@ app.get("/artist", async (req, res) => {
   res.json(artist.data);
 });
 
+app.get("/artist/albums", async (req, res) => {
+  const albums = await axios.get(
+    "https://api.spotify.com/v1/artists/1btWGBz4Uu1HozTwb2Lm8A/albums?include_groups=album",
+    auth_header
+  );
+
+  res.json(albums.data.items);
+});
+
 app.listen(port, () => {
   console.log("Example app listening on port 8080");
 });
