@@ -1,15 +1,13 @@
-import { NavLink } from "react-router-dom";
-
 const NavBar = () => {
   return (
     <header>
-      <nav className="absolute top-0 inset-x-0 h-16 p-3 justify-center content-center border-b-1 border-gray-400 bg-gray-700 text-white">
-        <ul>
+      <nav className="fixed top-0 inset-x-0 z-10 flex w-full items-center px-16 py-6 justify-center content-center border-b border-gray-400 bg-gray-700 text-white backdrop-blur md:justify-items-stretch">
+        <ul className="hidden md:flex gap-12">
           <li>
-            <NavLink href="/">Home</NavLink>
+            <a href="/">Home</a>
           </li>
           <li>
-            <NavLink href="/spotify">Spotify</NavLink>
+            <a href="/spotify">Spotify</a>
           </li>
         </ul>
       </nav>
