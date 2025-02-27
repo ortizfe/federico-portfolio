@@ -11,8 +11,8 @@ const NavBar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-x-1">
-          {NavbarItems.map((item, index) => (
-            <DesktopMenu menu={item} key={index} />
+          {NavbarItems.map((item) => (
+            <DesktopMenu menu={item} key={item.name} />
           ))}
         </ul>
 

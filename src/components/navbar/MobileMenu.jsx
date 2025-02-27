@@ -36,7 +36,7 @@ const MobileMenu = ({ NavbarItems }) => {
         className="fixed left-0 right-0 top-16 overflow-y-auto h-max bg-gray-800 backdrop-blur text-white p-6"
       >
         <ul>
-          {NavbarItems?.map(({ name, subMenu }, index) => {
+          {NavbarItems?.map(({ name, href, subMenu }, index) => {
             const hasSubMenu = subMenu?.length > 0;
             const isClicked = clicked === index;
 
@@ -44,6 +44,7 @@ const MobileMenu = ({ NavbarItems }) => {
               <li key={name}>
                 <NavLink
                   className="flex-center-between p-4 hover:bg-white/5 rounded-md cursor-pointer relative"
+                  to={href}
                   onClick={() => setClicked(isClicked ? null : index)}
                 >
                   {name}
@@ -60,13 +61,14 @@ const MobileMenu = ({ NavbarItems }) => {
                     variants={subMenuDrawer}
                     className="ml-5"
                   >
-                    {subMenu?.map(({ name, icon: Icon }) => (
+                    {subMenu?.map(({ name, href, icon: Icon }) => (
                       <li
                         key={name}
-                        className="p-2 flex-center hover:bg-white/5 rounded-md cursor-pointer gap-x-2"
                       >
-                        <Icon size={17} />
-                        <NavLink>{name}</NavLink>
+                        <NavLink className="p-2 flex-center hover:bg-white/5 rounded-md cursor-pointer gap-x-2" to={href}>
+                          <Icon size={17} />
+                          <span to={href}>{name}</span>
+                        </NavLink>
                       </li>
                     ))}
                   </motion.ul>
