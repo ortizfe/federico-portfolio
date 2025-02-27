@@ -1,7 +1,7 @@
 import Footer from "../components/footer/Footer";
 import NavBar from "../components/navbar/NavBar";
 
-const MoviePage = () => {
+const StockPage = () => {
   return (
     <div>
       <NavBar />
@@ -11,4 +11,4 @@ const MoviePage = () => {
   );
 };
 
-export default MoviePage;
+export default StockPage;
