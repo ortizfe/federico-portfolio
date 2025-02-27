@@ -26,14 +26,14 @@ const MobileMenu = ({ NavbarItems }) => {
 
   return (
     <div>
-      <button className="z-[999] relative" onClick={toggleDrawer}>
+      <button className="relative z-[999]" onClick={toggleDrawer}>
         {isOpen ? <X /> : <Menu />}
       </button>
 
       <motion.div
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? "0%" : "-100%" }}
-        className="fixed left-0 right-0 top-16 overflow-y-auto h-max bg-gray-800 backdrop-blur text-white p-6"
+        className="fixed top-16 right-0 left-0 h-max overflow-y-auto bg-gray-800 p-6 text-white backdrop-blur"
       >
         <ul>
           {NavbarItems?.map(({ name, href, subMenu }, index) => {
@@ -41,9 +41,13 @@ const MobileMenu = ({ NavbarItems }) => {
             const isClicked = clicked === index;
 
             return (
-              <li key={name}>
+              <motion.li
+                key={name}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <NavLink
-                  className="flex-center-between p-4 hover:bg-white/5 rounded-md cursor-pointer relative"
+                  className="flex-center-between relative cursor-pointer rounded-md p-4 hover:bg-white/5"
                   to={href}
                   onClick={() => setClicked(isClicked ? null : index)}
                 >
@@ -62,18 +66,19 @@ const MobileMenu = ({ NavbarItems }) => {
                     className="ml-5"
                   >
                     {subMenu?.map(({ name, href, icon: Icon }) => (
-                      <li
-                        key={name}
-                      >
-                        <NavLink className="p-2 flex-center hover:bg-white/5 rounded-md cursor-pointer gap-x-2" to={href}>
+                      <motion.li key={name} whileHover={{ scale: 1.02 }}>
+                        <NavLink
+                          className="flex-center cursor-pointer gap-x-2 rounded-md p-2 hover:bg-white/5"
+                          to={href}
+                        >
                           <Icon size={17} />
-                          <span to={href}>{name}</span>
+                          <span>{name}</span>
                         </NavLink>
-                      </li>
+                      </motion.li>
                     ))}
                   </motion.ul>
                 )}
-              </li>
+              </motion.li>
             );
           })}
         </ul>

@@ -38,14 +38,15 @@ const DesktopMenu = ({ menu }) => {
       className="group/link"
       onHoverStart={toggleHoverMenu}
       onHoverEnd={toggleHoverMenu}
+      whileTap={{ scale: 0.9 }}
     >
       <NavLink
         to={menu.href}
-        className="flex-center gap-1 cursor-pointer px-3 py-1 rounded-xl hover:bg-white/7"
+        className="flex-center cursor-pointer gap-1 rounded-xl px-3 py-1 hover:bg-white/7"
       >
         {menu.name}
         {hasSubMenu && (
-          <ChevronDown className="mt-[0.6px] group-hover/link:rotate-180 duration-300" />
+          <ChevronDown className="mt-[0.6px] duration-300 group-hover/link:rotate-180" />
         )}
       </NavLink>
 
@@ -60,8 +61,8 @@ const DesktopMenu = ({ menu }) => {
             {menu?.subMenu?.map((subMenu) => (
               <div key={subMenu.name} className="relative cursor-pointer">
                 <NavLink to={subMenu.href}>
-                  <div className="flex-center gap-x-4 group/menubox">
-                    <div className="bg-white/5 w-fit p-2 rounded-lg group-hover/menubox:bg-white group-hover/menubox:text-gray-900 duration-300">
+                  <div className="flex-center group/menubox gap-x-4">
+                    <div className="w-fit rounded-lg bg-white/5 p-2 duration-300 group-hover/menubox:bg-white group-hover/menubox:text-gray-900">
                       {subMenu?.icon && <subMenu.icon />}
                     </div>
                     <div>
