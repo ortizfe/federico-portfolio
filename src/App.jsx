@@ -7,8 +7,10 @@ function App() {
     <div>
       <NavBar />
       <main>
-        <div>
-          <h1>Home Page</h1>
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <h1 className="text-5xl">Home Page</h1>
+          <p className="">Coming soon...</p>
+          <span className="loader"></span>
         </div>
       </main>
       <Footer />

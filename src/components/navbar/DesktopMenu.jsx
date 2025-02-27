@@ -59,17 +59,17 @@ const DesktopMenu = ({ menu }) => {
           <div className="grid gap-7">
             {menu?.subMenu?.map((subMenu) => (
               <div key={subMenu.name} className="relative cursor-pointer">
-                <div className="flex-center gap-x-4 group/menubox">
-                  <div className="bg-white/5 w-fit p-2 rounded-lg group-hover/menubox:bg-white group-hover/menubox:text-gray-900 duration-300">
-                    {subMenu?.icon && <subMenu.icon />}
-                  </div>
-                  <div>
-                    <NavLink to={subMenu.href}>
+                <NavLink to={subMenu.href}>
+                  <div className="flex-center gap-x-4 group/menubox">
+                    <div className="bg-white/5 w-fit p-2 rounded-lg group-hover/menubox:bg-white group-hover/menubox:text-gray-900 duration-300">
+                      {subMenu?.icon && <subMenu.icon />}
+                    </div>
+                    <div>
                       <h6 className="font-semibold">{subMenu.name}</h6>
                       <p className="text-sm text-gray-400">{subMenu?.desc}</p>
-                    </NavLink>
+                    </div>
                   </div>
-                </div>
+                </NavLink>
               </div>
             ))}
           </div>
