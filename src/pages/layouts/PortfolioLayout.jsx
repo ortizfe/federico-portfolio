@@ -6,9 +6,9 @@ const PortfolioLayout = () => {
   return (
     <>
       <NavBar />
-      <main>
+      <div>
         <Outlet />
-      </main>
+      </div>
       <Footer />
     </>
   );
