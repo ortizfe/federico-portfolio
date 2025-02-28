@@ -1,8 +1,8 @@
 import express from "express";
 const app = express();
 
-app.listen(3000, () => console.log("Server ready on port 3000"));
+export const getTest = app.get("/", (req, res) =>
+  res.send("Express on Vercel")
+);
 
-if (typeof module === "object") {
-  module.exports = app;
-}
+app.listen(3000, () => console.log("Server ready on port 3000"));
