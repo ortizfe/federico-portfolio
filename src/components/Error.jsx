@@ -2,7 +2,10 @@
 
 import PageContent from "./PageContent";
 
-const ErrorPage = () => {
+const ErrorElement = () => {
+  // const error = useRouteError();
+  // console.log(error);
+
   let title = "Oops! Something went wrong";
   let message = "Could not find the page you were looking for.";
 
@@ -24,4 +27,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default ErrorElement;
