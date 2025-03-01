@@ -1,7 +1,7 @@
 import "./App.css";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
-import { Card, CardBody, CardHeader, Divider, Link } from "@heroui/react";
+import ListCard from "./components/ui/ListCard";
 import { motion } from "motion/react";
 
 const apiTable = [
@@ -11,7 +11,7 @@ const apiTable = [
     link: "https://developer.spotify.com/documentation/web-api",
   },
   {
-    name: "The Movie Database (TMDB) API",
+    name: "The Movie Database API",
     description:
       "Retrieve movie, TV show or actor images and/or data in your application",
     link: "https://developer.themoviedb.org/docs/getting-started",
@@ -45,45 +45,25 @@ function App() {
               This web application utilizes three site API&apos;s including the
               following:
             </p>
-            <div className="p-5">
-              <ul>
+            <div className="pt-5">
+              <div className="flex flex-wrap items-center justify-center gap-10">
                 {apiTable.map((api) => (
-                  <motion.li
+                  <motion.div
                     key={api.name}
-                    className="flex h-full flex-col"
+                    className="gap-10"
                     initial={{
                       opacity: 0,
                       x: -100,
                       y: 100,
                     }}
                     animate={{ opacity: 1, x: 0, y: 0 }}
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.05 }}
                   >
-                    <Card className="h-full w-full rounded-xl bg-gradient-to-br from-amber-200 to-lime-200 p-2">
-                      <CardHeader className="items-center justify-center text-2xl leading-none font-semibold tracking-tight text-gray-900 md:text-3xl lg:text-4xl">
-                        <div className="flex flex-col">
-                          <p className="text-md">{api.name}</p>
-                        </div>
-                      </CardHeader>
-                      <Divider />
-                      <CardBody className="flex flex-col items-center justify-center gap-2 py-1">
-                        <p className="text-lg text-gray-800">
-                          {api.description}
-                        </p>
-                        <Link
-                          isExternal
-                          showAnchorIcon
-                          href={api.link}
-                          className="text-blue-800 hover:scale-102 hover:text-gray-700"
-                        >
-                          Visit the {api.name} webpage
-                        </Link>
-                      </CardBody>
-                    </Card>
+                    <ListCard props={api} />
                     <br />
-                  </motion.li>
+                  </motion.div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
