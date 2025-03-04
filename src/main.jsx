@@ -12,7 +12,7 @@ import PortfolioLayout from "./pages/layouts/PortfolioLayout.jsx";
 import FedericoPage from "./pages/FedericoPage.jsx";
 import FaresPage from "./pages/FaresPage.jsx";
 import StockPage from "./pages/StockPage.jsx";
-import ErrorPage from "./components/Error.jsx";
+import ErrorPage from "./components/error/Error.jsx";
 import { StrictMode } from "react";
 
 const root = document.getElementById("root");

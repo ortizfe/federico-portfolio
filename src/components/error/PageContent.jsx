@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import NavBar from "./navbar/NavBar";
+import NavBar from "../navbar/NavBar";
 import { Frown } from "lucide-react";
 import { motion } from "motion/react";
 
