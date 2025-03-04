@@ -1,7 +1,10 @@
 import { Link } from "@heroui/react";
 import { useState, useEffect } from "react";
 
+import LoadingSpinner from "../ui/LoadingSpinner";
+
 const Artist = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [artist, setArtist] = useState("");
   const [artistUrl, setArtistUrl] = useState("");
   const [popularity, setPopularity] = useState("");
@@ -22,6 +25,7 @@ const Artist = () => {
           throw new Error(`Response status: ${response.status}`);
         }
         artistResponse = await response.json();
+        setIsLoading(false);
       } catch (error) {
         console.error(error.message);
       }
@@ -36,26 +40,32 @@ const Artist = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5">
-      <div>
-        <h1 className="font-bold">Spotify Artist Name</h1>
-        <p>{artist}</p>
-      </div>
-      <div>
-        <h1 className="font-bold">Followers</h1>
-        <p>{followers}</p>
-      </div>
-      <div>
-        <h1 className="font-bold">Popularity</h1>
-        <p>{popularity}</p>
-      </div>
-      <div>
-        <h1 className="font-bold">Find them on Spotify</h1>
-        <Link isExternal href={artistUrl}>
-          Visit
-        </Link>
-      </div>
-    </div>
+    <>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <div>
+          <div>
+            <h1 className="font-bold">Spotify Artist Name</h1>
+            <p>{artist}</p>
+          </div>
+          <div>
+            <h1 className="font-bold">Followers</h1>
+            <p>{followers}</p>
+          </div>
+          <div>
+            <h1 className="font-bold">Popularity</h1>
+            <p>{popularity}</p>
+          </div>
+          <div>
+            <h1 className="font-bold">Find them on Spotify</h1>
+            <Link isExternal href={artistUrl}>
+              Visit
+            </Link>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

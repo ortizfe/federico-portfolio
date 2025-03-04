@@ -1,4 +1,4 @@
-import Artist from "../components/spotify/Artist";
+import Artist from "../components/spotify/SpotifyArtist";
 import Footer from "../components/footer/Footer";
 import NavBar from "../components/navbar/NavBar";
 
