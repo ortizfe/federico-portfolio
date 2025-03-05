@@ -25,8 +25,8 @@ const SpotifyPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p>
-              Login to your personal spotify, search for your favorite artists
-              and songs, or browse your favorite albums
+              Login to your personal spotify or search for your favorite
+              artists, albums, and songs
             </p>
           </motion.div>
         </div>
