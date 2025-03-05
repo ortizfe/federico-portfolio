@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import LoadingSpinner from "../ui/LoadingSpinner";
 
-const Artist = () => {
+const SpotifyArtist = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [artist, setArtist] = useState("");
   const [artistUrl, setArtistUrl] = useState("");
@@ -69,4 +69,4 @@ const Artist = () => {
   );
 };
 
-export default Artist;
+export default SpotifyArtist;
