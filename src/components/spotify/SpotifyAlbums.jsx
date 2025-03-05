@@ -16,7 +16,7 @@ const SpotifyAlbums = () => {
 
       try {
         const response = await fetch(
-          `${spotify_testurl}spotify/search/albums`,
+          `${spotify_baseurl}spotify/search/albums`,
           {
             method: "GET",
           }

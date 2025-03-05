@@ -5,7 +5,7 @@ const AlbumCard = ({ albumName, artistName, albumCover }) => {
   return (
     <Card
       isFooterBlurred
-      className="flex flex-col items-center justify-center rounded-2xl border-1 border-white/20 shadow-sm shadow-gray-600"
+      className="flex translate-z-0 flex-col items-center justify-center rounded-2xl border-1 border-white/20 shadow-sm shadow-gray-600 hover:scale-105"
     >
       <Image
         alt={`${albumName} by ${artistName}`}
