@@ -66,7 +66,7 @@ const SpotifyTabs = () => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-4 ${styles.tabWrapper}`}
+      className={`flex flex-col items-center justify-center gap-10 ${styles.tabWrapper}`}
     >
       <div className={styles.tabHeader}>
         {tabs.map((tab) => (
