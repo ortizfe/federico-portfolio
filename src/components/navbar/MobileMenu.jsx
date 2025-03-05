@@ -33,7 +33,7 @@ const MobileMenu = ({ NavbarItems }) => {
       <motion.div
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? "0%" : "-100%" }}
-        className="fixed top-16 right-0 left-0 h-max overflow-y-auto bg-gray-800 p-6 text-white backdrop-blur"
+        className="fixed top-16 right-0 left-0 z-10 flex h-max flex-col overflow-y-auto bg-neutral-950/80 p-6 text-white shadow-xl backdrop-blur"
       >
         <ul>
           {NavbarItems?.map(({ name, href, subMenu }, index) => {
@@ -65,11 +65,14 @@ const MobileMenu = ({ NavbarItems }) => {
                     variants={subMenuDrawer}
                     className="ml-5"
                   >
-                    {subMenu?.map(({ name, href, icon: Icon }) => (
+                    {subMenu?.map(({ name, href, icon: Icon }, subIndex) => (
                       <motion.li key={name} whileHover={{ scale: 1.02 }}>
                         <NavLink
                           className="flex-center cursor-pointer gap-x-2 rounded-md p-2 hover:bg-white/5"
                           to={href}
+                          onClick={() =>
+                            setClicked(isClicked ? null : subIndex)
+                          }
                         >
                           <Icon size={17} />
                           <span>{name}</span>

@@ -1,4 +1,4 @@
-import { CircleUser } from "lucide-react";
+import { CircleUser, TrendingUp, AudioLines, Film } from "lucide-react";
 
 // Navbar data
 export const NavbarItems = [
@@ -7,16 +7,28 @@ export const NavbarItems = [
     href: "/",
   },
   {
-    name: "Spotify",
-    href: "/spotify",
-  },
-  {
-    name: "Movies",
-    href: "/tmdb",
-  },
-  {
-    name: "Stocks",
-    href: "/stocks",
+    name: "APIs",
+    subMenu: [
+      {
+        name: "Spotify",
+        href: "/spotify",
+        desc: "Spotify API",
+        icon: AudioLines,
+      },
+      {
+        name: "TMBD",
+        href: "/tmdb",
+        desc: "TMDB API",
+        icon: Film,
+      },
+      {
+        name: "Stocks",
+        href: "/stocks",
+        desc: "MarketStack API",
+        icon: TrendingUp,
+      },
+    ],
+    gridCols: 3,
   },
   {
     name: "Portfolios",

@@ -4,6 +4,7 @@ import NavBar from "../components/navbar/NavBar";
 import { motion } from "motion/react";
 
 const SpotifyPage = () => {
+  console.log("I want to see how many times this gets rerendered as a whole");
   return (
     <>
       <NavBar />
