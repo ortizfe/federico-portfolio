@@ -3,8 +3,8 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "route": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
     }
-  ],
-  "route": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
+  ]
 }
