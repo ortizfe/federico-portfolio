@@ -50,17 +50,24 @@ const SpotifyAlbums = () => {
     let albumsResponse = [];
     const albumQuery = album.split(" ").join("+");
 
+    const timeout = 10000;
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+
     try {
       const response = await fetch(
         `${spotify_testurl}spotify/search/albums?input=${albumQuery}&input=${market}`,
         {
           method: "GET",
+          signal: controller.signal,
         }
       );
 
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
+
+      clearTimeout(id);
       albumsResponse = await response.json();
     } catch (error) {
       console.error(error.message);
@@ -85,7 +92,7 @@ const SpotifyAlbums = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-2 pb-5">
+      <div className="flex flex-col items-center justify-center gap-2 pb-10">
         <p>Please enter the album you would like to search for below</p>
         <form
           onSubmit={(e) => {
@@ -114,9 +121,8 @@ const SpotifyAlbums = () => {
           </button>
         </form>
       </div>
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
+      {isLoading && <LoadingSpinner />}
+      {searchAlbums && (
         <div className="flex flex-wrap items-center justify-center gap-5">
           <div className="flex flex-wrap items-center justify-center gap-5">
             {searchAlbums?.map((album) => {
