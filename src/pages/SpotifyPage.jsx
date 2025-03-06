@@ -3,8 +3,9 @@ import Footer from "../components/footer/Footer";
 import NavBar from "../components/navbar/NavBar";
 import { motion } from "motion/react";
 
+import styles from "../components/spotify/Spotify.module.css";
+
 const SpotifyPage = () => {
-  console.log("I want to see how many times this gets rerendered as a whole");
   return (
     <>
       <NavBar />
@@ -16,7 +17,11 @@ const SpotifyPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="bg-gradient-to-r from-[rgba(10,208,32)] to-[rgba(11,120,94)] bg-clip-text py-3 text-4xl font-light text-transparent md:text-6xl">
-              Welcome to the Spotify API
+              {"Welcome to the Spotify API".split("").map((char, idx) => (
+                <span key={idx} className={styles.hoverText}>
+                  {char}
+                </span>
+              ))}
             </h1>
           </motion.div>
           <motion.div
