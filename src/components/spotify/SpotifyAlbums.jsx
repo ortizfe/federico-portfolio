@@ -2,20 +2,76 @@ import { useState, useEffect } from "react";
 
 import LoadingSpinner from "../ui/LoadingSpinner";
 import AlbumCard from "./ui/AlbumCard";
-import { Input } from "@heroui/react";
+import { country_codes } from "./countryCodes";
 
 const SpotifyAlbums = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchAlbums, setSearchAlbums] = useState([]);
   const [formData, setFormData] = useState({
     album: "",
   });
+  const [userCountry, setUserCountry] = useState("");
 
-  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
+  useEffect(() => {
+    const fetchCountry = async () => {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+
+        if (!response.ok) {
+          setUserCountry("US");
+          throw new Error("Failed to fetch IP data");
+        }
+
+        const data = await response.json();
+
+        if (Object.keys(country_codes).includes(data.country_code)) {
+          setUserCountry(data.country_code);
+        } else {
+          setUserCountry("US");
+        }
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    fetchCountry();
+  }, []);
+
+  // const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
   const spotify_testurl = "http://localhost:3000/";
 
   const userSearchAlbum = () => {
-    console.log("form submitted");
+    setIsLoading(true);
+
+    getAlbums(formData.album, userCountry);
+  };
+
+  const getAlbums = async (album, market) => {
+    let albumsResponse = [];
+    const albumQuery = album.split(" ").join("+");
+
+    try {
+      const response = await fetch(
+        `${spotify_testurl}spotify/search/albums?input=${albumQuery}&input=${market}`,
+        {
+          method: "GET",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+      albumsResponse = await response.json();
+    } catch (error) {
+      console.error(error.message);
+    }
+
+    setSearchAlbums(albumsResponse.items);
+    setIsLoading(false);
+    setFormData((prevData) => ({
+      ...prevData,
+      album: "",
+    }));
   };
 
   const handleUserInput = (e) => {
@@ -27,68 +83,41 @@ const SpotifyAlbums = () => {
     }));
   };
 
-  useEffect(() => {
-    const getAlbums = async () => {
-      let albumsResponse = [];
-
-      try {
-        const response = await fetch(
-          `${spotify_testurl}spotify/search/albums`,
-          {
-            method: "GET",
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-        albumsResponse = await response.json();
-      } catch (error) {
-        console.error(error.message);
-      }
-
-      setSearchAlbums(albumsResponse.items);
-      setIsLoading(false);
-    };
-
-    getAlbums();
-  }, []);
-
   return (
     <>
+      <div className="flex flex-col items-center justify-center gap-2 pb-5">
+        <p>Please enter the album you would like to search for below</p>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          className="relative flex w-full max-w-md items-center gap-2 rounded-full border border-white/20 bg-gradient-to-br from-white/20 to-white/5 py-1.5 pr-1.5 pl-6"
+        >
+          <input
+            type="text"
+            placeholder="Enter an album name"
+            name="album"
+            id="album"
+            value={formData.album}
+            onChange={handleUserInput}
+            className="text-md w-full bg-transparent text-white placeholder-white/80 focus:outline-0"
+          />
+          <button
+            type="submit"
+            onClick={(e) => {
+              e.stopPropagation();
+              userSearchAlbum();
+            }}
+            className="group flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-[rgba(30,215,96,1)] bg-gradient-to-br px-4 py-3 text-sm font-medium text-gray-900 transition-transform active:scale-[0.985]"
+          >
+            Search
+          </button>
+        </form>
+      </div>
       {isLoading ? (
         <LoadingSpinner />
       ) : (
         <div className="flex flex-wrap items-center justify-center gap-5">
-          <div className="flex flex-col gap-2">
-            <p>Please enter the album you would like to search for below</p>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-              }}
-              className="relative flex w-full max-w-md items-center gap-2 rounded-full border border-white/20 bg-gradient-to-br from-white/20 to-white/5 py-1.5 pr-1.5 pl-6"
-            >
-              <input
-                type="text"
-                placeholder="Enter an album name"
-                name="album"
-                id="album"
-                value={formData.album}
-                onChange={handleUserInput}
-                className="text-md w-full bg-transparent text-white placeholder-white/80 focus:outline-0"
-              />
-              <button
-                type="submit"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  userSearchAlbum();
-                }}
-                className="group flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-[rgba(30,215,96,1)] bg-gradient-to-br px-4 py-3 text-sm font-medium text-gray-900 transition-transform active:scale-[0.985]"
-              >
-                Search
-              </button>
-            </form>
-          </div>
           <div className="flex flex-wrap items-center justify-center gap-5">
             {searchAlbums?.map((album) => {
               return (
@@ -97,7 +126,7 @@ const SpotifyAlbums = () => {
                   albumCover={album.images[1].url}
                   albumName={album.name}
                   artistName={album.artists[0].name}
-                  releaseDate={album.release_date}
+                  albumType={album.album_type}
                 />
               );
             })}
