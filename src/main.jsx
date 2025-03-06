@@ -20,7 +20,7 @@ const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
   <StrictMode>
     <HeroUIProvider>
-      <BrowserRouter basename="/">
+      <BrowserRouter>
         <Routes>
           <Route index element={<App />} />
           <Route path="/spotify" element={<SpotifyPage />} />
