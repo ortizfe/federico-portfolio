@@ -2,8 +2,9 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  ]
+  ],
+  "route": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
 }
