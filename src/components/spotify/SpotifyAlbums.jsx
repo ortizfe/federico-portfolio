@@ -12,6 +12,9 @@ const SpotifyAlbums = () => {
   });
   const [userCountry, setUserCountry] = useState("");
 
+  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
+  // const spotify_testurl = "http://localhost:3000/";
+
   useEffect(() => {
     const fetchCountry = async () => {
       try {
@@ -37,9 +40,6 @@ const SpotifyAlbums = () => {
     fetchCountry();
   }, []);
 
-  // const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
-  const spotify_testurl = "http://localhost:3000/";
-
   const userSearchAlbum = () => {
     setIsLoading(true);
 
@@ -56,7 +56,7 @@ const SpotifyAlbums = () => {
 
     try {
       const response = await fetch(
-        `${spotify_testurl}spotify/search/albums?input=${albumQuery}&input=${market}`,
+        `${spotify_baseurl}spotify/search/albums?input=${albumQuery}&input=${market}`,
         {
           method: "GET",
           signal: controller.signal,

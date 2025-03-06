@@ -13,8 +13,8 @@ const SpotifyArtist = () => {
   const [userCountry, setUserCountry] = useState("");
   const [artistSelected, setArtistSelected] = useState({});
 
-  // const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
-  const spotify_testurl = "http://localhost:3000/";
+  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
+  // const spotify_testurl = "http://localhost:3000/";
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -57,7 +57,7 @@ const SpotifyArtist = () => {
 
     try {
       const response = await fetch(
-        `${spotify_testurl}spotify/search/artists?input=${artistQuery}&input=${market}`,
+        `${spotify_baseurl}spotify/search/artists?input=${artistQuery}&input=${market}`,
         {
           method: "GET",
           signal: controller.signal,
