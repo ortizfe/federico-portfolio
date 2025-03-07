@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import { country_codes } from "./countryCodes";
 import ArtistCard from "./ui/ArtistCard";
+import { express_baseurl } from "./spotifyUrls";
 
 const SpotifyArtist = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,9 +12,6 @@ const SpotifyArtist = () => {
     artist: "",
   });
   const [userCountry, setUserCountry] = useState("");
-
-  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
-  // const spotify_testurl = "http://localhost:3000/";
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -56,7 +54,7 @@ const SpotifyArtist = () => {
 
     try {
       const response = await fetch(
-        `${spotify_baseurl}spotify/search/artists?input=${artistQuery}&input=${market}`,
+        `${express_baseurl.prod}spotify/search/artists?input=${artistQuery}&input=${market}`,
         {
           method: "GET",
           signal: controller.signal,

@@ -5,7 +5,6 @@ import SpotifyAlbums from "./SpotifyAlbums";
 import SpotifyArtist from "./SpotifyArtist";
 
 import styles from "./SpotifyTabs.module.css";
-import SpotifySongs from "./SpotifySongs";
 
 const tabs = [
   // {
@@ -15,13 +14,13 @@ const tabs = [
   //     return <SpotifyLogin />;
   //   },
   // },
-  {
-    name: "songs",
-    label: "Songs",
-    render: () => {
-      return <SpotifySongs />;
-    },
-  },
+  // {
+  //   name: "myspotify",
+  //   label: "My Spotify",
+  //   render: () => {
+  //     return <SpotifyLogin />;
+  //   },
+  // },
   {
     name: "artists",
     label: "Artists",
