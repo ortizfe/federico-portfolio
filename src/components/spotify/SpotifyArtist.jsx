@@ -54,7 +54,7 @@ const SpotifyArtist = () => {
 
     try {
       const response = await fetch(
-        `${express_baseurl}spotify/search/artists?input=${artistQuery}&input=${market}`,
+        `${express_baseurl.prod}spotify/search/artists?input=${artistQuery}&input=${market}`,
         {
           method: "GET",
           signal: controller.signal,

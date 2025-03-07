@@ -18,7 +18,7 @@ const ArtistModal = ({ id, src, isOpen, setIsOpen }) => {
 
         try {
           const response = await fetch(
-            `${express_baseurl}spotify/artist?input=${id}`,
+            `${express_baseurl.prod}spotify/artist?input=${id}`,
             {
               method: "GET",
               signal: controller.signal,

@@ -59,7 +59,7 @@ const SpotifyAlbums = () => {
 
     try {
       const response = await fetch(
-        `${express_baseurl}spotify/search/albums?input=${albumQuery}&input=${market}`,
+        `${express_baseurl.prod}spotify/search/albums?input=${albumQuery}&input=${market}`,
         {
           method: "GET",
           signal: controller.signal,

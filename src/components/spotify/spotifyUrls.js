@@ -1,2 +1,4 @@
-export const api_baseurl = "https://express-backend-api-one.vercel.app/"; // prod
-// export const express_baseurl = "http://localhost:3000/"; // dev
+export const api_baseurl = {
+  prod: "https://express-backend-api-one.vercel.app/",
+  dev: "http:localhost:3000/",
+};
