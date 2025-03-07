@@ -13,6 +13,9 @@ const SpotifyAlbums = () => {
   });
   const [userCountry, setUserCountry] = useState("");
 
+  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
+  // const spotify_testurl = "http://localhost:3000/";
+
   /* states for pagination */
   const [currentPage, setCurrentPage] = useState(1);
   const [albumsPerPage] = useState(6);
@@ -41,9 +44,6 @@ const SpotifyAlbums = () => {
 
     fetchCountry();
   }, []);
-
-  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
-  // const spotify_testurl = "http://localhost:3000/";
 
   const userSearchAlbum = () => {
     setIsLoading(true);
