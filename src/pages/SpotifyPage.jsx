@@ -29,10 +29,7 @@ const SpotifyPage = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p>
-              Login to your personal spotify or search for your favorite
-              artists, albums, and songs
-            </p>
+            <p>Search for your favorite artists and albums</p>
           </motion.div>
         </div>
         <div className="pt-10">
