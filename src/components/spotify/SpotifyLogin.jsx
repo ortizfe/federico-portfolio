@@ -1,4 +1,4 @@
-import { express_baseurl } from "../../utils";
+import { express_baseurl } from "./spotifyUrls";
 
 const SpotifyLogin = () => {
   const login = async () => {

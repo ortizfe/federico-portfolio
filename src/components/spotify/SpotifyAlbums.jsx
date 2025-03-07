@@ -4,7 +4,7 @@ import LoadingSpinner from "../ui/LoadingSpinner";
 import AlbumPageTabs from "./ui/AlbumPageTabs";
 import { country_codes } from "./countryCodes";
 import { Pagination } from "@mui/material";
-import { express_baseurl } from "../../utils";
+import { express_baseurl } from "./spotifyUrls";
 
 const SpotifyAlbums = () => {
   const [isLoading, setIsLoading] = useState(false);

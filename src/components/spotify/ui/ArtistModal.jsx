@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import PropTypes from "prop-types";
 import LoadingSpinner from "../../ui/LoadingSpinner";
-import { express_baseurl } from "../../../utils";
+import { express_baseurl } from "../spotifyUrls";
 
 const ArtistModal = ({ id, src, isOpen, setIsOpen }) => {
   const [artistInfo, setArtistInfo] = useState(null);

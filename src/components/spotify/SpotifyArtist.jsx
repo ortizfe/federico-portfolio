@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import { country_codes } from "./countryCodes";
 import ArtistCard from "./ui/ArtistCard";
-import { express_baseurl } from "../../utils";
+import { express_baseurl } from "./spotifyUrls";
 
 const SpotifyArtist = () => {
   const [isLoading, setIsLoading] = useState(false);
