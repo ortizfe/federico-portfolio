@@ -2,12 +2,10 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import PropTypes from "prop-types";
 import LoadingSpinner from "../../ui/LoadingSpinner";
+import { express_baseurl } from "../../../utils";
 
 const ArtistModal = ({ id, src, isOpen, setIsOpen }) => {
   const [artistInfo, setArtistInfo] = useState(null);
-
-  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
-  // const spotify_testurl = "http://localhost:3000/";
 
   useEffect(() => {
     if (isOpen === true) {
@@ -20,7 +18,7 @@ const ArtistModal = ({ id, src, isOpen, setIsOpen }) => {
 
         try {
           const response = await fetch(
-            `${spotify_baseurl}spotify/artist?input=${id}`,
+            `${express_baseurl}spotify/artist?input=${id}`,
             {
               method: "GET",
               signal: controller.signal,
