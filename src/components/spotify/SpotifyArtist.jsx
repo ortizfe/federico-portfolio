@@ -11,7 +11,6 @@ const SpotifyArtist = () => {
     artist: "",
   });
   const [userCountry, setUserCountry] = useState("");
-  const [artistSelected, setArtistSelected] = useState({});
 
   // const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
   const spotify_testurl = "http://localhost:3000/";
