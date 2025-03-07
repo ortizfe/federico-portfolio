@@ -21,12 +21,12 @@ export const NavbarItems = [
         desc: "TMDB API",
         icon: Film,
       },
-      {
-        name: "Stocks",
-        href: "/stocks",
-        desc: "MarketStack API",
-        icon: TrendingUp,
-      },
+      // {
+      //   name: "Stocks",
+      //   href: "/stocks",
+      //   desc: "MarketStack API",
+      //   icon: TrendingUp,
+      // },
     ],
     gridCols: 3,
   },
