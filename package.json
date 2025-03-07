@@ -11,12 +11,15 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@headlessui/react": "^2.2.0",
     "@heroui/navbar": "^2.2.12",
     "@heroui/react": "^2.7.2",
     "@heroui/spinner": "^2.2.10",
     "@heroui/table": "^2.2.12",
     "@heroui/tabs": "^2.2.11",
+    "@mui/material": "^6.4.7",
     "@react-router/node": "^7.2.0",
     "@react-router/serve": "^7.2.0",
     "@tailwindcss/vite": "^4.0.9",

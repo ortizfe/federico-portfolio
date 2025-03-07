@@ -6,8 +6,8 @@ import LoadingSpinner from "../../ui/LoadingSpinner";
 const ArtistModal = ({ id, src, isOpen, setIsOpen }) => {
   const [artistInfo, setArtistInfo] = useState(null);
 
-  // const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
-  const spotify_testurl = "http://localhost:3000/";
+  const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
+  // const spotify_testurl = "http://localhost:3000/";
 
   useEffect(() => {
     if (isOpen === true) {
@@ -20,7 +20,7 @@ const ArtistModal = ({ id, src, isOpen, setIsOpen }) => {
 
         try {
           const response = await fetch(
-            `${spotify_testurl}spotify/artist?input=${id}`,
+            `${spotify_baseurl}spotify/artist?input=${id}`,
             {
               method: "GET",
               signal: controller.signal,
