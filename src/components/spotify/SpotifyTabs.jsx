@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import SpotifyAlbums from "./SpotifyAlbums";
-import SpotifyLogin from "./SpotifyLogin";
+// import SpotifyLogin from "./SpotifyLogin";
 import SpotifyArtist from "./SpotifyArtist";
 
 import styles from "./SpotifyTabs.module.css";
 import SpotifySongs from "./SpotifySongs";
 
 const tabs = [
-  {
-    name: "login",
-    label: "Login",
-    render: () => {
-      return <SpotifyLogin />;
-    },
-  },
+  // {
+  //   name: "login",
+  //   label: "Login",
+  //   render: () => {
+  //     return <SpotifyLogin />;
+  //   },
+  // },
   {
     name: "songs",
     label: "Songs",

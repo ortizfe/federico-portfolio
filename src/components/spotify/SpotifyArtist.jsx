@@ -11,7 +11,6 @@ const SpotifyArtist = () => {
     artist: "",
   });
   const [userCountry, setUserCountry] = useState("");
-  const [artistSelected, setArtistSelected] = useState({});
 
   const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
   // const spotify_testurl = "http://localhost:3000/";
@@ -130,7 +129,11 @@ const SpotifyArtist = () => {
               <ArtistCard
                 artistName={artistSearch[0].name}
                 artistId={artistSearch[0].id}
-                artistCover={artistSearch[0].images[0].url}
+                artistCover={
+                  artistSearch[0]?.images[0]?.url
+                    ? artistSearch[0].images[0].url
+                    : "https://images.pexels.com/photos/695644/pexels-photo-695644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                }
               />
               <p className="flex h-15 flex-col items-center justify-center text-xl">
                 Other suggested artists
@@ -143,7 +146,11 @@ const SpotifyArtist = () => {
                     key={artist.id}
                     artistName={artist.name}
                     artistId={artist.id}
-                    artistCover={artist.images[0].url}
+                    artistCover={
+                      artist?.images[0]?.url
+                        ? artist.images[0].url
+                        : "https://images.pexels.com/photos/695644/pexels-photo-695644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    }
                   />
                 );
               })}

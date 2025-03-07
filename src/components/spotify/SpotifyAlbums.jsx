@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
 import LoadingSpinner from "../ui/LoadingSpinner";
-import AlbumCard from "./ui/AlbumCard";
+import AlbumPageTabs from "./ui/AlbumPageTabs";
 import { country_codes } from "./countryCodes";
+import { Pagination } from "@mui/material";
 
 const SpotifyAlbums = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +15,10 @@ const SpotifyAlbums = () => {
 
   const spotify_baseurl = "https://express-backend-api-one.vercel.app/";
   // const spotify_testurl = "http://localhost:3000/";
+
+  /* states for pagination */
+  const [currentPage, setCurrentPage] = useState(1);
+  const [albumsPerPage] = useState(6);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -90,6 +95,13 @@ const SpotifyAlbums = () => {
     }));
   };
 
+  // Get current albums
+  const indexOfLastAlbum = currentPage * albumsPerPage;
+  const indexOfFirstAlbum = indexOfLastAlbum - albumsPerPage;
+  const currentAlbums = searchAlbums.slice(indexOfFirstAlbum, indexOfLastAlbum);
+
+  const numPages = Math.ceil(searchAlbums.length / currentAlbums.length);
+
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-2 pb-10">
@@ -123,19 +135,21 @@ const SpotifyAlbums = () => {
       </div>
       {isLoading && <LoadingSpinner />}
       {searchAlbums && (
-        <div className="flex flex-wrap items-center justify-center gap-5">
-          <div className="flex flex-wrap items-center justify-center gap-5">
-            {searchAlbums?.map((album) => {
-              return (
-                <AlbumCard
-                  key={album.id}
-                  albumCover={album.images[1].url}
-                  albumName={album.name}
-                  artistName={album.artists[0].name}
-                  albumType={album.album_type}
-                />
-              );
-            })}
+        <div className="flex flex-col gap-5">
+          <AlbumPageTabs albums={currentAlbums} />
+
+          <div className="flex flex-wrap items-center justify-center">
+            <Pagination
+              count={numPages}
+              color="primary"
+              size="large"
+              sx={{
+                backgroundColor: "white",
+                borderRadius: "50px",
+                opacity: `${searchAlbums.length > 0 ? 100 : 0}`,
+              }}
+              onChange={(e, value) => setCurrentPage(value)}
+            />
           </div>
         </div>
       )}
