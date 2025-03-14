@@ -39,7 +39,6 @@ const DesktopMenu = ({ menu }) => {
       className="group/link"
       onHoverStart={toggleHoverMenu}
       onHoverEnd={toggleHoverMenu}
-      whileTap={{ scale: 0.9 }}
     >
       <CustomNavLink
         link={menu.href}
