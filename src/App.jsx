@@ -16,12 +16,12 @@ const apiTable = [
       "Retrieve movie, TV show or actor images and/or data in your application",
     link: "https://developer.themoviedb.org/docs/getting-started",
   },
-  {
-    name: "MarketStack API",
-    description:
-      "API to retrieve real-time, intraday and historical stock market data",
-    link: "https://marketstack.com/documentation_v2",
-  },
+  // {
+  //   name: "MarketStack API",
+  //   description:
+  //     "API to retrieve real-time, intraday and historical stock market data",
+  //   link: "https://marketstack.com/documentation_v2",
+  // },
 ];
 
 function App() {
