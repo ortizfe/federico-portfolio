@@ -32,7 +32,6 @@ const NavBar = () => {
             <DesktopMenu menu={item} key={item.name} />
           ))}
         </ul>
-        {/* </ul> */}
 
         {/* Small-Screen Menu */}
         <div className="md:hidden">
